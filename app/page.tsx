@@ -5,7 +5,7 @@ const saasTools = [
     icon: '◈',
     status: 'Good Signal',
     statusClass: 'good',
-    detail: 'Cancel anytime'
+    detail: 'Clear pricing · Cancel anytime · Privacy found'
   },
   {
     name: 'CloudVault AI',
@@ -13,7 +13,7 @@ const saasTools = [
     icon: '☁',
     status: 'Attention',
     statusClass: 'attention',
-    detail: 'Annual billing only'
+    detail: 'Mixed terms · Review before subscribing'
   },
   {
     name: 'TaskBoost Ultra',
@@ -21,7 +21,7 @@ const saasTools = [
     icon: '⚡',
     status: 'Risk',
     statusClass: 'risk',
-    detail: 'Terms unclear'
+    detail: 'Hidden terms · Weak trust · Cancellation unclear'
   }
 ];
 
@@ -30,21 +30,21 @@ const signalCards = [
     title: 'Good Signal',
     icon: '✓',
     subtitle: 'Proceed with confidence.',
-    text: 'Transparent pricing, clear cancellation, strong privacy and security, healthy public reputation.',
+    text: 'Transparent pricing, clear cancellation, strong privacy/security, healthy trust signals.',
     className: 'good'
   },
   {
     title: 'Attention',
     icon: '!',
     subtitle: 'Review before subscribing.',
-    text: 'Mixed signals found. Check cancellation terms, pricing transparency, privacy policy, and user feedback.',
+    text: 'Mixed signals. Review pricing, terms, privacy, and recent feedback before subscribing.',
     className: 'attention'
   },
   {
     title: 'Risk',
     icon: '×',
     subtitle: 'Proceed with caution.',
-    text: 'Hidden terms, unclear cancellation, weak privacy or security signals, or poor public reputation detected.',
+    text: 'Hidden terms, weak trust signals, unclear cancellation or privacy. Proceed with caution.',
     className: 'risk'
   }
 ];
@@ -191,19 +191,19 @@ export default function Home() {
             <span className="step-number">1</span>
             <div className="step-icon">⌕</div>
             <h3>Analyze</h3>
-            <p>We scan SaaS pricing pages, cancellation terms, privacy policy, security signals, and public reputation.</p>
+            <p>SaaS pages, pricing, terms, privacy, security, and cancellation signals evaluated.</p>
           </article>
           <article>
             <span className="step-number attention">2</span>
             <div className="step-icon attention">◇</div>
             <h3>Understand</h3>
-            <p>Our signal engine evaluates evidence quality, transparency, and trust indicators to determine the verdict.</p>
+            <p>Evidence, confidence, and trust indicators scored and summarized.</p>
           </article>
           <article>
             <span className="step-number">3</span>
             <div className="step-icon">盾</div>
             <h3>Decide</h3>
-            <p>Get a clear signal—subscribe with confidence or walk away before you pay.</p>
+            <p>Subscribe with confidence, or walk away before you pay.</p>
           </article>
         </div>
       </section>
