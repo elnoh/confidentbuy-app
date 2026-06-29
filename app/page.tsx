@@ -1,30 +1,27 @@
-const products = [
+const saasTools = [
   {
-    name: 'Mirrorless Camera',
-    price: '$129.99',
-    image: '/products/camera.svg',
+    name: 'ProjectFlow Pro',
+    price: '$29/mo',
+    icon: '◈',
     status: 'Good Signal',
     statusClass: 'good',
-    ratingText: '(1,251)',
-    stars: '★★★★★'
+    detail: 'Cancel anytime'
   },
   {
-    name: 'Stainless Bottle',
-    price: '$24.99',
-    image: '/products/bottle.svg',
+    name: 'CloudVault AI',
+    price: '$19/mo',
+    icon: '☁',
     status: 'Attention',
     statusClass: 'attention',
-    ratingText: '(620)',
-    stars: '★★★☆☆'
+    detail: 'Annual billing only'
   },
   {
-    name: 'Wireless Headphones',
-    price: '$89.99',
-    image: '/products/headphones.svg',
+    name: 'TaskBoost Ultra',
+    price: '$49/mo',
+    icon: '⚡',
     status: 'Risk',
     statusClass: 'risk',
-    ratingText: '(172)',
-    stars: '★☆☆☆☆'
+    detail: 'Terms unclear'
   }
 ];
 
@@ -33,23 +30,30 @@ const signalCards = [
     title: 'Good Signal',
     icon: '✓',
     subtitle: 'Proceed with confidence.',
-    text: 'Strong trust signs, positive reviews, secure checkout, and low scam risk.',
+    text: 'Transparent pricing, clear cancellation, strong privacy and security, healthy public reputation.',
     className: 'good'
   },
   {
     title: 'Attention',
     icon: '!',
-    subtitle: 'Review before buying.',
-    text: 'Mixed signals found. Check reviews, seller details, return policy, and product evidence.',
+    subtitle: 'Review before subscribing.',
+    text: 'Mixed signals found. Check cancellation terms, pricing transparency, privacy policy, and user feedback.',
     className: 'attention'
   },
   {
     title: 'Risk',
     icon: '×',
     subtitle: 'Proceed with caution.',
-    text: 'Warning signs detected, poor trust indicators, low review confidence, or high scam risk.',
+    text: 'Hidden terms, unclear cancellation, weak privacy or security signals, or poor public reputation detected.',
     className: 'risk'
   }
+];
+
+const pricingTiers = [
+  { tier: 'Free',      amount: '$0',    period: '',    detail: 'Get started',       highlight: false },
+  { tier: 'Pro',       amount: '$4.22', period: '/mo', detail: 'Full signal access', highlight: true  },
+  { tier: 'Family',    amount: '$12',   period: '/mo', detail: 'Up to 6 members',   highlight: false },
+  { tier: 'Corporate', amount: '$90',   period: '/mo', detail: 'Team access',        highlight: false },
 ];
 
 export default function Home() {
@@ -78,11 +82,12 @@ export default function Home() {
 
       <section id="top" className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Shop smarter. Avoid regrets.</p>
-          <h1>Know the signal before you buy.</h1>
+          <p className="eyebrow">Evaluate SaaS before you pay.</p>
+          <h1>Know the signal before you subscribe.</h1>
           <p className="hero-text">
-            ConfidentBuy analyzes merchant trust, product quality signals, reviews, and scam
-            risk—so you can shop online with clarity and confidence.
+            ConfidentBuy analyzes SaaS trust, pricing transparency, cancellation terms,
+            privacy, security, and user reputation so you can evaluate software and
+            digital services before you pay.
           </p>
 
           <div className="hero-actions" id="extension">
@@ -104,34 +109,38 @@ export default function Home() {
 
           <div className="trust-row" id="features">
             <div><span>🔒</span><strong>Privacy First</strong><small>Your data stays private</small></div>
-            <div><span>🛡️</span><strong>Works Everywhere</strong><small>On any shopping site</small></div>
-            <div><span>⚡</span><strong>Real-Time Analysis</strong><small>Instant trust insights</small></div>
+            <div><span>🛡️</span><strong>Works Everywhere</strong><small>Any SaaS pricing page</small></div>
+            <div><span>⚡</span><strong>Instant Signal</strong><small>Trust insights on demand</small></div>
           </div>
         </div>
 
-        <div className="browser-card" aria-label="ConfidentBuy product signal example">
+        <div className="browser-card" aria-label="ConfidentBuy SaaS signal example">
           <div className="browser-top">
             <span className="dot red"></span>
             <span className="dot yellow"></span>
             <span className="dot green"></span>
-            <div className="search-bar">Search products...</div>
-            <div className="cart">🛒<sup>2</sup></div>
+            <div className="search-bar">asana.com/pricing</div>
+            <div className="cart">🔐</div>
           </div>
 
           <div className="browser-content">
             <section className="product-area">
-              <h2>Popular picks for you</h2>
+              <h2>Compare plans</h2>
               <div className="product-grid">
-                {products.map((product) => (
-                  <article key={product.name} className={`product-card ${product.statusClass}`}>
-                    <span className="status-badge">{product.statusClass === 'good' ? '✓' : product.statusClass === 'attention' ? '!' : '×'}</span>
-                    <img src={product.image} alt="" />
-                    <p className="price">{product.price}</p>
-                    <h3>{product.name}</h3>
-                    <div className={`stars ${product.statusClass}`} aria-label={`${product.status} rating`}>
-                      <span>{product.stars}</span> <small>{product.ratingText}</small>
+                {saasTools.map((tool) => (
+                  <article key={tool.name} className={`product-card ${tool.statusClass}`}>
+                    <span className="status-badge">
+                      {tool.statusClass === 'good' ? '✓' : tool.statusClass === 'attention' ? '!' : '×'}
+                    </span>
+                    <div className="plan-display">
+                      <div className="plan-icon-char">{tool.icon}</div>
+                      <div className="plan-price">{tool.price}</div>
                     </div>
-                    <div className="mini-pill">{product.status}</div>
+                    <h3>{tool.name}</h3>
+                    <div className={`stars ${tool.statusClass}`}>
+                      <small>{tool.detail}</small>
+                    </div>
+                    <div className="mini-pill">{tool.status}</div>
                   </article>
                 ))}
               </div>
@@ -141,22 +150,22 @@ export default function Home() {
               <div className="panel-head"><strong>ConfidentBuy</strong><span>⚙</span></div>
               <div className="result-main">
                 <div className="big-check">✓</div>
-                <div><h3>Good Signal</h3><p>This looks safe to buy.</p></div>
+                <div><h3>Good Signal</h3><p>Safe to subscribe.</p></div>
               </div>
               <ul className="check-list">
-                <li>Trusted merchant <span>ⓘ</span></li>
-                <li>Strong customer reviews <span>ⓘ</span></li>
-                <li>Secure payment <span>ⓘ</span></li>
-                <li>Good product signals <span>ⓘ</span></li>
-                <li>Low scam risk <span>ⓘ</span></li>
+                <li>Transparent pricing <span>ⓘ</span></li>
+                <li>Clear cancellation terms <span>ⓘ</span></li>
+                <li>Privacy policy found <span>ⓘ</span></li>
+                <li>Security page found <span>ⓘ</span></li>
+                <li>Healthy user reputation <span>ⓘ</span></li>
               </ul>
               <div className="signal-guide">
                 <h4>Signal Guide</h4>
                 <p className="guide good"><span>✓</span><strong>Good Signal</strong><small>Proceed with confidence</small></p>
-                <p className="guide attention"><span>!</span><strong>Attention</strong><small>Review before buying</small></p>
+                <p className="guide attention"><span>!</span><strong>Attention</strong><small>Review before subscribing</small></p>
                 <p className="guide risk"><span>×</span><strong>Risk</strong><small>Proceed with caution</small></p>
               </div>
-              <p className="panel-foot">Analyzed across thousands of stores</p>
+              <p className="panel-foot">Analyzed across SaaS vendors globally</p>
             </aside>
           </div>
         </div>
@@ -178,17 +187,45 @@ export default function Home() {
       <section id="how" className="how-it-works">
         <h2>How ConfidentBuy Works</h2>
         <div className="steps">
-          <article><span className="step-number">1</span><div className="step-icon">⌕</div><h3>Analyze</h3><p>We scan the merchant, product, reviews, and web signals in real time.</p></article>
-          <article><span className="step-number attention">2</span><div className="step-icon attention">◇</div><h3>Understand</h3><p>Our AI evaluates trust, quality, and risk to determine the overall signal.</p></article>
-          <article><span className="step-number">3</span><div className="step-icon">盾</div><h3>Decide</h3><p>Get a clear signal so you can buy with confidence—or walk away.</p></article>
+          <article>
+            <span className="step-number">1</span>
+            <div className="step-icon">⌕</div>
+            <h3>Analyze</h3>
+            <p>We scan SaaS pricing pages, cancellation terms, privacy policy, security signals, and public reputation.</p>
+          </article>
+          <article>
+            <span className="step-number attention">2</span>
+            <div className="step-icon attention">◇</div>
+            <h3>Understand</h3>
+            <p>Our signal engine evaluates evidence quality, transparency, and trust indicators to determine the verdict.</p>
+          </article>
+          <article>
+            <span className="step-number">3</span>
+            <div className="step-icon">盾</div>
+            <h3>Decide</h3>
+            <p>Get a clear signal—subscribe with confidence or walk away before you pay.</p>
+          </article>
         </div>
       </section>
 
-      <footer className="footer" id="pricing">
-        <span>✓ 1M+ install goal</span>
-        <span>★ Clear consumer signal</span>
+      <section id="pricing" className="pricing">
+        <h2>Pricing</h2>
+        <div className="pricing-grid">
+          {pricingTiers.map((t) => (
+            <div key={t.tier} className={`price-card${t.highlight ? ' good' : ''}`}>
+              <div className="price-tier">{t.tier}</div>
+              <div className="price-amount">{t.amount}<span>{t.period}</span></div>
+              <div className="price-detail">{t.detail}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <footer className="footer">
+        <span>✓ SaaS trust analysis</span>
+        <span>★ Clear subscription signal</span>
         <span>↻ Continuously updated</span>
-        <span>◎ Works on major stores</span>
+        <span>◎ Any SaaS pricing page</span>
       </footer>
     </main>
   );
